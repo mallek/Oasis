@@ -46,6 +46,9 @@ namespace Oasis.Engine
                 case "k":
                 case "kill":
                     return "Kill";
+                case "recall":
+                case "/":
+                    return "Recall";
 
                 default :
                     return "";

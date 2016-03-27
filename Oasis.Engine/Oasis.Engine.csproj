@@ -47,6 +47,7 @@
     <Compile Include="Commands\Kill.cs" />
     <Compile Include="Commands\North.cs" />
     <Compile Include="Commands\ReadLocation.cs" />
+    <Compile Include="Commands\Recall.cs" />
     <Compile Include="Commands\Score.cs" />
     <Compile Include="Commands\South.cs" />
     <Compile Include="Commands\West.cs" />
