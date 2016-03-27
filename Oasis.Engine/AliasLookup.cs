@@ -13,20 +13,40 @@ namespace Oasis.Engine
         {
             switch (commandToCheck.ToLower())
             {
+                
+                case "exit":
+                case "quit":
+                    return "exit";
+
+                    //Directions
+                case "n":
+                case "north":
+                    return "North";
+                case "e":
+                case "east":
+                    return "East";
+                case "s":
+                case "south":
+                    return "South";
+                case "w":
+                case "west":
+                    return "West";
+
+                    //charter commands
+                case "score":
+                case "sco":
+                    return "Score";
                 case "look":
                 case "l":
                 case "readLocation":
                     return "ReadLocation";
-                case "exit":
-                case "quit":
-                    return "exit";
-                case "n":
-                case "north":
-                    return "North";
-                case "s":
-                case "south":
-                    return "South";
-                    
+                case "inv":
+                case "inventory":
+                    return "Inventory";
+                case "k":
+                case "kill":
+                    return "Kill";
+
                 default :
                     return "";
             }

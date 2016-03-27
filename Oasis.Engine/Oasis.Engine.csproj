@@ -42,9 +42,14 @@
   <ItemGroup>
     <Compile Include="AliasLookup.cs" />
     <Compile Include="Charter.cs" />
+    <Compile Include="Commands\East.cs" />
+    <Compile Include="Commands\Inventory.cs" />
+    <Compile Include="Commands\Kill.cs" />
     <Compile Include="Commands\North.cs" />
     <Compile Include="Commands\ReadLocation.cs" />
+    <Compile Include="Commands\Score.cs" />
     <Compile Include="Commands\South.cs" />
+    <Compile Include="Commands\West.cs" />
     <Compile Include="HealingPotion.cs" />
     <Compile Include="Interfaces\IGameCommand.cs" />
     <Compile Include="Interfaces\IItem.cs" />
