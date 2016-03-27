@@ -11,7 +11,7 @@ namespace Oasis.Engine
     {
         public static string ReturnCommand(string commandToCheck)
         {
-            switch (commandToCheck)
+            switch (commandToCheck.ToLower())
             {
                 case "look":
                 case "l":
@@ -21,7 +21,11 @@ namespace Oasis.Engine
                 case "quit":
                     return "exit";
                 case "n":
+                case "north":
                     return "North";
+                case "s":
+                case "south":
+                    return "South";
                     
                 default :
                     return "";

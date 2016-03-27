@@ -44,6 +44,7 @@
     <Compile Include="Charter.cs" />
     <Compile Include="Commands\North.cs" />
     <Compile Include="Commands\ReadLocation.cs" />
+    <Compile Include="Commands\South.cs" />
     <Compile Include="HealingPotion.cs" />
     <Compile Include="Interfaces\IGameCommand.cs" />
     <Compile Include="Interfaces\IItem.cs" />
