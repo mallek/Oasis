@@ -11,8 +11,27 @@ namespace Oasis.Engine.Commands
     {
         public bool ExecuteCommand(string[] args, PlayerCharter charter)
         {
-            if(charter.Inventory.Count == 0)
+            if (charter.Inventory.Count == 0)
+            {
                 Console.WriteLine("You do not have any items");
+                return false;
+            }
+
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"*****************************************************************************");
+            sb.AppendLine($"|  Inventory for {charter.Name} ");
+            sb.AppendLine($"*****************************************************************************");
+            sb.AppendLine($"|");
+
+            foreach (InventoryItem inventoryItem in charter.Inventory)
+            {
+                sb.AppendLine(inventoryItem.Quantity > 1
+                    ? $"| [{inventoryItem.Quantity}] - {inventoryItem.Details.NamePlural}"
+                    : $"| [{inventoryItem.Quantity}] - {inventoryItem.Details.Name}");
+            }
+
+            Console.WriteLine(sb.ToString());
+
 
             return true;
         }
