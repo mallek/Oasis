@@ -12,6 +12,7 @@ namespace Oasis
         static void Main(string[] args)
         {
             Game currentGame = new Game();
+            currentGame.ReadMotd();
             currentGame.SetupPlayer();
             currentGame.ReadLocation();
             currentGame.InitializeCommands();

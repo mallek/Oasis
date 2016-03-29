@@ -58,6 +58,12 @@ namespace Oasis
             readLocation.ExecuteCommand(null, _player);
         }
 
+        public void ReadMotd()
+        {
+            Motd motd = new Motd();
+            motd.ExecuteCommand(null, _player);
+        }
+
         public void InitializeCommands()
         {
             //build dictionary of classes and alias'

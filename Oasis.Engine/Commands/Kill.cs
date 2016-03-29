@@ -30,8 +30,8 @@ namespace Oasis.Engine.Commands
                 return false;
             }
 
-            charter.NonPlayerCharterFighting = charter.CurrentLocation.NonPlayerCharterHere;
-            Console.WriteLine("Killing " + args[1]);
+            charter.NonPlayerCharterFighting = new NonPlayerCharter(charter.CurrentLocation.NonPlayerCharterHere);
+            Console.WriteLine("Killing " + charter.NonPlayerCharterFighting.Name);
 
             while (charter.NonPlayerCharterFighting.CurrentHitPoints > 0 && charter.CurrentHitPoints > 0)
             {
@@ -40,6 +40,16 @@ namespace Oasis.Engine.Commands
             }
 
             Console.WriteLine($"You kill a {charter.NonPlayerCharterFighting.Name}");
+
+            //TODO Add Looting
+            //foreach (Item item in charter.NonPlayerCharterFighting.CurrentLoot)
+            //{
+            //    if (charter.Inventory.Exists(x => x.Details == item))
+            //    {
+                    
+            //    }
+            //}
+           // charter.CurrentLocation.NonPlayerCharterHere = null;
                 
 
             return true;
