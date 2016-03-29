@@ -16,5 +16,13 @@ namespace Oasis.Engine.Commands
             readLocation.ExecuteCommand(null, charter);
             return true;
         }
+
+        public List<string> GetAlias()
+        {
+            List<string> results = new List<string>();
+            results.Add("Rec");
+            results.Add("/");
+            return results;
+        }
     }
 }

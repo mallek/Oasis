@@ -24,5 +24,15 @@ namespace Oasis.Engine.Commands
             return false;
 
         }
+
+        public List<string> GetAlias()
+        {
+            List<string> results = new List<string>();
+
+            results.Add("N");
+            results.Add("North");
+
+            return results;
+        } 
     }
 }

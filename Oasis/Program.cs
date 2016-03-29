@@ -14,6 +14,7 @@ namespace Oasis
             Game currentGame = new Game();
             currentGame.SetupPlayer();
             currentGame.ReadLocation();
+            currentGame.InitializeCommands();
 
             while (currentGame.PlayerIsAlive())
             {

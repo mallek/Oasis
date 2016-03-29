@@ -22,5 +22,12 @@ namespace Oasis.Engine.Commands
             Console.WriteLine("You cannot go that way");
             return false;
         }
+
+        public List<string> GetAlias()
+        {
+            List<string> results = new List<string>();
+            results.Add("W");
+            return results;
+        }
     }
 }

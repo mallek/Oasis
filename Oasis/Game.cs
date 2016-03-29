@@ -12,8 +12,10 @@ namespace Oasis
 {
     public class Game
     {
+
         private PlayerCharter _player;
         private NonPlayerCharter _currentNpc;
+        private Dictionary<string, Type> _commandTable;
 
         public const int PLAYER_ID_UNKNOWN = 1;
         public const string COMMAND_NAMESPACE = "Oasis.Engine.Commands";
@@ -25,6 +27,7 @@ namespace Oasis
             _player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_HEALING_POTION), 2));
+            _commandTable = new Dictionary<string, Type>(StringComparer.InvariantCultureIgnoreCase);
 
         }
 
@@ -57,33 +60,76 @@ namespace Oasis
             readLocation.ExecuteCommand(null, _player);
         }
 
+        public void InitializeCommands()
+        {
+            //build dictionary of classes and alias'
+
+            var allCommands = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+                               from type in assembly.GetTypes()
+                               where type.Namespace == COMMAND_NAMESPACE
+                               select type);
+
+            foreach (Type currentCommand in allCommands)
+            {
+                IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(currentCommand);
+                var commandAliasList = commandInstance.GetAlias();
+                foreach (string s in commandAliasList)
+                {
+                    _commandTable.Add(s, currentCommand);
+                }
+            }
+        }
+
         public void ExecuteCommand()
         {
             string[] command = Console.ReadLine()?.Split(' ');
 
-            string aliasCommand = AliasLookup.ReturnCommand(command?[0]);
-
-            if (aliasCommand.ToLower() == "exit")
+            if (command?.Length > 0)
             {
-                _player.CurrentHitPoints = 0;
-                return;
+                bool validKey = _commandTable.ContainsKey(command[0]);
+
+                if (validKey)
+                {
+                    var commandType = _commandTable[command[0]];
+                    IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
+                    commandInstance.ExecuteCommand(command, _player);
+                }
+                else
+                {
+                    Console.WriteLine("Huh?");
+                    return;
+                }
+
+
+
             }
 
-            var commandType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-                        from type in assembly.GetTypes()
-                        where type.Name == aliasCommand && type.Namespace == COMMAND_NAMESPACE
-                               select type).FirstOrDefault();
 
-            if (commandType == null)
-            {
-                Console.WriteLine("Huh?");
-                return;
-            }
+            //string aliasCommand = AliasLookup.ReturnCommand(command?[0]);
 
-            IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
+            //if (aliasCommand.ToLower() == "exit")
+            //{
+            //    _player.CurrentHitPoints = 0;
+            //    return;
+            //}
 
-            commandInstance.ExecuteCommand(command, _player);
-            
+
+
+            //var commandType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
+            //            from type in assembly.GetTypes()
+            //            where type.Name == aliasCommand && type.Namespace == COMMAND_NAMESPACE
+            //                   select type).FirstOrDefault();
+
+            //if (commandType == null)
+            //{
+            //    Console.WriteLine("Huh?");
+            //    return;
+            //}
+
+            // IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
+
+            //  commandInstance.ExecuteCommand(command, _player);
+
             //Console.WriteLine(commandType.FullName);
 
         }

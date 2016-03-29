@@ -25,5 +25,12 @@ namespace Oasis.Engine.Commands
             
             return true;
         }
+
+        public List<string> GetAlias()
+        {
+            List<string> results = new List<string>();
+            results.Add("Sco");
+            return results;
+        }
     }
 }

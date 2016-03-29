@@ -41,5 +41,13 @@ namespace Oasis.Engine.Commands
 
             Console.WriteLine(sb.ToString());
         }
+
+        public List<string> GetAlias()
+        {
+            List<string> results = new List<string>();
+            results.Add("L");
+            results.Add("Look");
+            return results;
+        }
     }
 }

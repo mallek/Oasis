@@ -11,6 +11,8 @@ namespace Oasis.Engine
     {
         public static string ReturnCommand(string commandToCheck)
         {
+            
+
             switch (commandToCheck.ToLower())
             {
                 
@@ -32,7 +34,9 @@ namespace Oasis.Engine
                 case "west":
                     return "West";
 
-                    //charter commands
+                    
+
+                //charter commands
                 case "score":
                 case "sco":
                     return "Score";
@@ -51,7 +55,7 @@ namespace Oasis.Engine
                     return "Recall";
 
                 default :
-                    return "";
+                    return commandToCheck;
             }
             
         }
