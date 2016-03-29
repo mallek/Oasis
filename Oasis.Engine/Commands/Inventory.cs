@@ -38,10 +38,8 @@ namespace Oasis.Engine.Commands
 
         public List<string> GetAlias()
         {
-            List<string> results = new List<string>();
-            results.Add("I");
-            results.Add("Inv");
-            return results;
+            return new List<string> {"I", "Inv", "Inventory"};
+           
         }
     }
 }
