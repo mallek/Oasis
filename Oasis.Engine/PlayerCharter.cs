@@ -8,13 +8,14 @@ namespace Oasis.Engine
 {
     public class PlayerCharter : Charter
     {
-
+        public Dictionary<string, Type> CommandDictionary { get; set; }
         public int Gold { get; set; }
         public int ExperiancePoints { get; set; }
         public List<InventoryItem> Inventory { get; set; }
         public List<Quest> Quests { get; set; }
-
         public Location CurrentLocation { get; set; }
+
+        public NonPlayerCharter NonPlayerCharterFighting { get; set; }
 
         public PlayerCharter(int id, int currentHitPoints, int maximumHitPoints, string name, int level, int gold, int experiancePoints) : base(id, currentHitPoints, maximumHitPoints, name, level)
         {
@@ -22,6 +23,7 @@ namespace Oasis.Engine
             ExperiancePoints = experiancePoints;
             Inventory = new List<InventoryItem>();
             Quests = new List<Quest>();
+            CommandDictionary = new Dictionary<string, Type>(StringComparer.InvariantCultureIgnoreCase);
         }
 
         public bool IsPlayerStillAlive()

@@ -15,8 +15,7 @@ namespace Oasis
 
         private PlayerCharter _player;
         private NonPlayerCharter _currentNpc;
-        private Dictionary<string, Type> _commandTable;
-
+        
         public const int PLAYER_ID_UNKNOWN = 1;
         public const string COMMAND_NAMESPACE = "Oasis.Engine.Commands";
 
@@ -27,8 +26,7 @@ namespace Oasis
             _player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_HEALING_POTION), 2));
-            _commandTable = new Dictionary<string, Type>(StringComparer.InvariantCultureIgnoreCase);
-
+            
         }
 
         internal void SetupPlayer()
@@ -75,7 +73,7 @@ namespace Oasis
                 var commandAliasList = commandInstance.GetAlias();
                 foreach (string s in commandAliasList)
                 {
-                    _commandTable.Add(s, currentCommand);
+                    _player.CommandDictionary.Add(s, currentCommand);
                 }
             }
         }
@@ -86,51 +84,22 @@ namespace Oasis
 
             if (command?.Length > 0)
             {
-                bool validKey = _commandTable.ContainsKey(command[0]);
+                bool validKey = _player.CommandDictionary.ContainsKey(command[0]);
 
                 if (validKey)
                 {
-                    var commandType = _commandTable[command[0]];
+                    var commandType = _player.CommandDictionary[command[0]];
                     IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
                     commandInstance.ExecuteCommand(command, _player);
                 }
                 else
                 {
                     Console.WriteLine("Huh?");
-                    return;
                 }
-
-
 
             }
 
 
-            //string aliasCommand = AliasLookup.ReturnCommand(command?[0]);
-
-            //if (aliasCommand.ToLower() == "exit")
-            //{
-            //    _player.CurrentHitPoints = 0;
-            //    return;
-            //}
-
-
-
-            //var commandType = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
-            //            from type in assembly.GetTypes()
-            //            where type.Name == aliasCommand && type.Namespace == COMMAND_NAMESPACE
-            //                   select type).FirstOrDefault();
-
-            //if (commandType == null)
-            //{
-            //    Console.WriteLine("Huh?");
-            //    return;
-            //}
-
-            // IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
-
-            //  commandInstance.ExecuteCommand(command, _player);
-
-            //Console.WriteLine(commandType.FullName);
 
         }
     }

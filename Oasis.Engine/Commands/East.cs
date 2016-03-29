@@ -25,10 +25,7 @@ namespace Oasis.Engine.Commands
 
         public List<string> GetAlias()
         {
-            List<string> results = new List<string>();
-            results.Add("E");
-            results.Add("East");
-            return results;
+            return new List<string> {"E", "East"};
         }
     }
 }

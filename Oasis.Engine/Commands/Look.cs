@@ -11,8 +11,6 @@ namespace Oasis.Engine.Commands
     {
         public bool ExecuteCommand(string[] args, PlayerCharter charter)
         {
-
-
             ReadLocation loc = new ReadLocation();
             loc.ExecuteCommand(args, charter);
             return true;
@@ -20,10 +18,7 @@ namespace Oasis.Engine.Commands
 
         public List<string> GetAlias()
         {
-            List<string> results = new List<string>();
-            results.Add("l");
-            results.Add("Look");
-            return results;
+            return new List<string> {"l", "Look"};
         }
     }
 }

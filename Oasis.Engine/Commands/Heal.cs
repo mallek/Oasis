@@ -7,17 +7,17 @@ using Oasis.Engine.Interfaces;
 
 namespace Oasis.Engine.Commands
 {
-    public class Exit : IGameCommand
+    public class Heal : IGameCommand
     {
         public bool ExecuteCommand(string[] args, PlayerCharter charter)
         {
-            charter.CurrentHitPoints = 0;
+            charter.CurrentHitPoints = charter.MaximimHitPoints;
             return true;
         }
 
         public List<string> GetAlias()
         {
-            return new List<string> {"Exit", "Quit"};
+            return new List<string> { "Heal" }; ;
         }
     }
 }

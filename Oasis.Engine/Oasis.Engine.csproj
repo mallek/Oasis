@@ -44,6 +44,8 @@
     <Compile Include="Charter.cs" />
     <Compile Include="Commands\East.cs" />
     <Compile Include="Commands\Exit.cs" />
+    <Compile Include="Commands\Heal.cs" />
+    <Compile Include="Commands\Help.cs" />
     <Compile Include="Commands\Inventory.cs" />
     <Compile Include="Commands\Kill.cs" />
     <Compile Include="Commands\Look.cs" />

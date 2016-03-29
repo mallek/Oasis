@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Oasis.Engine.Interfaces;
 
@@ -23,24 +24,46 @@ namespace Oasis.Engine.Commands
                 return false;
             }
 
-            if (charter.CurrentLocation.NonPlayerCharterHere.Name.ToLower() != args[1].ToLower())
+            if (!charter.CurrentLocation.NonPlayerCharterHere.Name.ToLower().Contains(args[1].ToLower()))
             {
                 Console.WriteLine("You do not see that here");
                 return false;
             }
 
+            charter.NonPlayerCharterFighting = charter.CurrentLocation.NonPlayerCharterHere;
             Console.WriteLine("Killing " + args[1]);
+
+            while (charter.NonPlayerCharterFighting.CurrentHitPoints > 0 && charter.CurrentHitPoints > 0)
+            {
+                ProcessDamage(charter);
+                ProcessDamage(charter.NonPlayerCharterFighting);
+            }
+
+            Console.WriteLine($"You kill a {charter.NonPlayerCharterFighting.Name}");
                 
 
             return true;
         }
 
+        private static void ProcessDamage(Charter charter)
+        {
+            var rnd = RandomNumberGenerator.NumberBetween(0, 3);
+            if (rnd == 0)
+            {
+                Console.WriteLine($"{charter.Name}'s hit misses.");
+            }
+            else
+            {
+                Console.WriteLine($"{charter.Name} does {rnd} damage.");
+                charter.CurrentHitPoints -= rnd;
+            }
+            Thread.Sleep(1000);
+        }
+
         public List<string> GetAlias()
         {
-            List<string> results = new List<string>();
-            results.Add("K");
-            results.Add("Ki");
-            return results;
+            return new List<string> {"K", "Ki", "Kill"};
+           
         }
     }
 }

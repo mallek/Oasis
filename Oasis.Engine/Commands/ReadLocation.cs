@@ -44,10 +44,10 @@ namespace Oasis.Engine.Commands
 
         public List<string> GetAlias()
         {
-            List<string> results = new List<string>();
+            return new List<string>();
             //results.Add("L");
             //results.Add("Look");
-            return results;
+            
         }
     }
 }
