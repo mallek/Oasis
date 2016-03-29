@@ -9,9 +9,9 @@ namespace Oasis.Engine.Commands
 {
     public class Inventory : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            if (charter.Inventory.Count == 0)
+            if (character.Inventory.Count == 0)
             {
                 Console.WriteLine("You do not have any items");
                 return false;
@@ -19,11 +19,11 @@ namespace Oasis.Engine.Commands
 
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"*****************************************************************************");
-            sb.AppendLine($"|  Inventory for {charter.Name} ");
+            sb.AppendLine($"|  Inventory for {character.Name} ");
             sb.AppendLine($"*****************************************************************************");
             sb.AppendLine($"|");
 
-            foreach (InventoryItem inventoryItem in charter.Inventory)
+            foreach (InventoryItem inventoryItem in character.Inventory)
             {
                 sb.AppendLine(inventoryItem.Quantity > 1
                     ? $"| [{inventoryItem.Quantity}] - {inventoryItem.Details.NamePlural}"

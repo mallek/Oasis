@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oasis.Engine
 {
-    public class NonPlayerCharter : Charter
+    public class NonPlayerCharacter : Character
     {
 
         public int MaximumDamage { get; set; }
@@ -15,7 +15,7 @@ namespace Oasis.Engine
         public List<LootItem> LootTable { get; set; }
         public List<Item> CurrentLoot { get; }
 
-        public NonPlayerCharter(int id, string name, int maximumDamage, int rewardExperiancePoints, 
+        public NonPlayerCharacter(int id, string name, int maximumDamage, int rewardExperiancePoints, 
             int rewardGold, int currentHitPoints, int maximumHitPoints,  int level) 
             : base(id, currentHitPoints, maximumHitPoints, name, level)
         {
@@ -26,7 +26,7 @@ namespace Oasis.Engine
             
         }
 
-        public NonPlayerCharter(NonPlayerCharter npc) 
+        public NonPlayerCharacter(NonPlayerCharacter npc) 
             : base(npc.ID, npc.CurrentHitPoints, npc.MaximimHitPoints, npc.Name, npc.Level)
         {
             this.MaximumDamage = npc.MaximumDamage;

@@ -9,10 +9,10 @@ namespace Oasis.Engine.Commands
 {
     public class Help : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
             List<string> commands = new List<string>();
-            foreach (KeyValuePair<string, Type> keyValuePair in charter.CommandDictionary)
+            foreach (KeyValuePair<string, Type> keyValuePair in character.CommandDictionary)
             {
                 commands.Add(keyValuePair.Key);
             }

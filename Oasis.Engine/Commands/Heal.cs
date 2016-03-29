@@ -9,9 +9,9 @@ namespace Oasis.Engine.Commands
 {
     public class Heal : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            charter.CurrentHitPoints = charter.MaximimHitPoints;
+            character.CurrentHitPoints = character.MaximimHitPoints;
             return true;
         }
 

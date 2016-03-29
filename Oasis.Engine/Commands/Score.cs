@@ -9,16 +9,16 @@ namespace Oasis.Engine.Commands
 {
     public class Score : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"*****************************************************************************");
-            sb.AppendLine($"|  Score for {charter.Name} ");
+            sb.AppendLine($"|  Score for {character.Name} ");
             sb.AppendLine($"*****************************************************************************");
             sb.AppendLine($"|");
-            sb.AppendLine($"|  HP:{charter.CurrentHitPoints}/{charter.MaximimHitPoints} " +
-                      $"| Exp:{charter.ExperiancePoints} " +
-                      $"| Gold:{charter.Gold}");
+            sb.AppendLine($"|  HP:{character.CurrentHitPoints}/{character.MaximimHitPoints} " +
+                      $"| Exp:{character.ExperiancePoints} " +
+                      $"| Gold:{character.Gold}");
             sb.AppendLine($"|");
             sb.AppendLine($"*****************************************************************************");
             Console.WriteLine(sb.ToString());

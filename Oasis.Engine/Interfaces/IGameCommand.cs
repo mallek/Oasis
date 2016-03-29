@@ -8,7 +8,7 @@ namespace Oasis.Engine.Interfaces
 {
     public interface IGameCommand
     {
-        bool ExecuteCommand(string[] args, PlayerCharter charter);
+        bool ExecuteCommand(string[] args, PlayerCharacter character);
         List<string> GetAlias();
     }
 }

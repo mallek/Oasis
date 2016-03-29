@@ -9,19 +9,19 @@ namespace Oasis.Engine.Commands
 {
     public class ReadLocation : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            Console.WriteLine(charter.CurrentLocation.Description);
-            DisplayExits(charter.CurrentLocation);
-            DisplayMobs(charter.CurrentLocation);
+            Console.WriteLine(character.CurrentLocation.Description);
+            DisplayExits(character.CurrentLocation);
+            DisplayMobs(character.CurrentLocation);
             return true;
         }
 
         private void DisplayMobs(Location currentLocation)
         {
-            if (currentLocation.NonPlayerCharterHere != null)
+            if (currentLocation.NonPlayerCharacterHere != null)
             {
-                Console.WriteLine($"{currentLocation.NonPlayerCharterHere.Name} is here.");
+                Console.WriteLine($"{currentLocation.NonPlayerCharacterHere.Name} is here.");
             }
         }
 

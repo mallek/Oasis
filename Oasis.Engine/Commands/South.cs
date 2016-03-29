@@ -9,13 +9,13 @@ namespace Oasis.Engine.Commands
 {
     public class South : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            if (charter.CurrentLocation.LocationToSouth != null)
+            if (character.CurrentLocation.LocationToSouth != null)
             {
-                charter.CurrentLocation = charter.CurrentLocation.LocationToSouth;
+                character.CurrentLocation = character.CurrentLocation.LocationToSouth;
                 ReadLocation readLocation = new ReadLocation();
-                readLocation.ExecuteCommand(null, charter);
+                readLocation.ExecuteCommand(null, character);
                 return true;
             }
 

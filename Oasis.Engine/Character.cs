@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oasis.Engine
 {
-    public class Charter
+    public class Character
     {
         public int ID { get; set; }
         public int CurrentHitPoints { get; set; }
@@ -14,7 +14,7 @@ namespace Oasis.Engine
         public string Name { get; set; }
         public int Level { get; set; }
 
-        public Charter(int id, int currentHitPoints, int maximumHitPoints, string name, int level)
+        public Character(int id, int currentHitPoints, int maximumHitPoints, string name, int level)
         {
             ID = id;
             CurrentHitPoints = currentHitPoints;

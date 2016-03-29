@@ -9,9 +9,9 @@ namespace Oasis.Engine.Commands
 {
     public class Exit : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            charter.CurrentHitPoints = 0;
+            character.CurrentHitPoints = 0;
             return true;
         }
 

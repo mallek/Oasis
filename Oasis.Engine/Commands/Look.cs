@@ -9,10 +9,10 @@ namespace Oasis.Engine.Commands
 {
     public class Look : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
             ReadLocation loc = new ReadLocation();
-            loc.ExecuteCommand(args, charter);
+            loc.ExecuteCommand(args, character);
             return true;
         }
 

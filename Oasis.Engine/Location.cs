@@ -20,19 +20,19 @@ namespace Oasis.Engine
         public Location LocationToSouth { get; set; }
         public Location LocationToEast { get; set; }
         public Location LocationToWest { get; set; }
-        public NonPlayerCharter NonPlayerCharterHere { get; set; }
+        public NonPlayerCharacter NonPlayerCharacterHere { get; set; }
 
         public Location(int id, string name, string description,
             Item itemRequiredToEnter = null,
             Quest questAvaliableHere = null,
-            NonPlayerCharter npcLivingHere = null)
+            NonPlayerCharacter npcLivingHere = null)
         {
             ID = id;
             Name = name;
             Description = description;
             ItemRequiredToEnter = itemRequiredToEnter;
             QuestAvaliableHere = questAvaliableHere;
-            NonPlayerCharterHere = npcLivingHere;
+            NonPlayerCharacterHere = npcLivingHere;
         }
 
 

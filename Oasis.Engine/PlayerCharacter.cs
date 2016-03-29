@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Oasis.Engine
 {
-    public class PlayerCharter : Charter
+    public class PlayerCharacter : Character
     {
         public Dictionary<string, Type> CommandDictionary { get; set; }
         public int Gold { get; set; }
@@ -15,9 +15,9 @@ namespace Oasis.Engine
         public List<Quest> Quests { get; set; }
         public Location CurrentLocation { get; set; }
 
-        public NonPlayerCharter NonPlayerCharterFighting { get; set; }
+        public NonPlayerCharacter NonPlayerCharacterFighting { get; set; }
 
-        public PlayerCharter(int id, int currentHitPoints, int maximumHitPoints, string name, int level, int gold, int experiancePoints) : base(id, currentHitPoints, maximumHitPoints, name, level)
+        public PlayerCharacter(int id, int currentHitPoints, int maximumHitPoints, string name, int level, int gold, int experiancePoints) : base(id, currentHitPoints, maximumHitPoints, name, level)
         {
             Gold = gold;
             ExperiancePoints = experiancePoints;

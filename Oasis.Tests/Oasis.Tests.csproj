@@ -51,13 +51,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Commands\CommandTests.cs" />
-    <Compile Include="CommandTests.cs" />
+    <Compile Include="GameTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Oasis.Engine\Oasis.Engine.csproj">
       <Project>{FAB552FF-E3AC-4AF5-94A9-4BFD641AC9A8}</Project>
       <Name>Oasis.Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Oasis\Oasis.csproj">
+      <Project>{11EF540C-141C-4A7B-873B-3E140F03016D}</Project>
+      <Name>Oasis</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

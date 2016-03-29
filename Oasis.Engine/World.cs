@@ -10,7 +10,7 @@ namespace Oasis.Engine
     public static class World
     {
         public static readonly List<Item> Items = new List<Item>();
-        public static readonly List<NonPlayerCharter> NonPlayerCharters = new List<NonPlayerCharter>();
+        public static readonly List<NonPlayerCharacter> NonPlayerCharters = new List<NonPlayerCharacter>();
         public static readonly List<Quest> Quests = new List<Quest>();
         public static readonly List<Location> Locations = new List<Location>();
 
@@ -66,15 +66,15 @@ namespace Oasis.Engine
         }
         private static void PopulateNPCs()
         {
-            NonPlayerCharter rat = new NonPlayerCharter(NPC_ID_RAT, "Rat", 5, 3, 10, 3, 3, 1);
+            NonPlayerCharacter rat = new NonPlayerCharacter(NPC_ID_RAT, "Rat", 5, 3, 10, 3, 3, 1);
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_RAT_TAIL), 75, false));
             rat.LootTable.Add(new LootItem(ItemByID(ITEM_ID_PIECE_OF_FUR), 75, true));
 
-            NonPlayerCharter snake = new NonPlayerCharter(NPC_ID_SNAKE, "Snake", 5,3,10,3,3, 1);
+            NonPlayerCharacter snake = new NonPlayerCharacter(NPC_ID_SNAKE, "Snake", 5,3,10,3,3, 1);
             snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKE_FANG), 75, false));
             snake.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SNAKESKIN), 75, true));
 
-            NonPlayerCharter giantSpider = new NonPlayerCharter(NPC_ID_GIANT_SPIDER, "Giant Spider", 20, 5, 40, 10, 10, 5);
+            NonPlayerCharacter giantSpider = new NonPlayerCharacter(NPC_ID_GIANT_SPIDER, "Giant Spider", 20, 5, 40, 10, 10, 5);
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_FANG), 75, true));
             giantSpider.LootTable.Add(new LootItem(ItemByID(ITEM_ID_SPIDER_SILK), 25, false));
 
@@ -109,18 +109,18 @@ namespace Oasis.Engine
             Location alchemistHut = new Location(LOCATION_ID_ALCHEMIST_HUT, "Alchemist's hut", "There are many strange plants on the shelves.");
             alchemistHut.QuestAvaliableHere = QuestByID(QUEST_ID_CLEAR_ALCHEMIST_GARDEN);
             Location alchemistsGarden = new Location(LOCATION_ID_ALCHEMISTS_GARDEN, "Alchemist's garden", "Many plants are growing here.");
-            alchemistsGarden.NonPlayerCharterHere = NpcByID(NPC_ID_RAT);
+            alchemistsGarden.NonPlayerCharacterHere = NpcByID(NPC_ID_RAT);
             Location farmhouse = new Location(LOCATION_ID_FARMHOUSE, "Farmhouse", "There is a small farmhouse, with a farmer in front");
             farmhouse.QuestAvaliableHere = QuestByID(QUEST_ID_CLEAR_FARMERS_FIELD);
 
             Location farmersField = new Location(LOCATION_ID_FARM_FIELD, "Farmer's Field", "You see rows of vegetables growing here.");
-            farmersField.NonPlayerCharterHere = NpcByID(NPC_ID_SNAKE);
+            farmersField.NonPlayerCharacterHere = NpcByID(NPC_ID_SNAKE);
 
             Location guardPost = new Location(LOCATION_ID_GUARD_POST, "Guard post", "There is a large, tough-looking guard here.", ItemByID(ITEM_ID_ADVENTURER_PASS));
             Location bridge = new Location(LOCATION_ID_BRIDGE, "Bridge", "A stone bridge crosses a wide river.");
 
             Location spiderField = new Location(LOCATION_ID_SPIDER_FIELD, "Forest", "You see spider webs covering the trees in the forest.");
-            spiderField.NonPlayerCharterHere = NpcByID(NPC_ID_GIANT_SPIDER);
+            spiderField.NonPlayerCharacterHere = NpcByID(NPC_ID_GIANT_SPIDER);
 
 
             //Link locations together
@@ -162,9 +162,9 @@ namespace Oasis.Engine
 
         }
 
-        public static NonPlayerCharter NpcByID(int npcId)
+        public static NonPlayerCharacter NpcByID(int npcId)
         {
-            foreach (NonPlayerCharter nonPlayerCharter in NonPlayerCharters)
+            foreach (NonPlayerCharacter nonPlayerCharter in NonPlayerCharters)
             {
                 if (nonPlayerCharter.ID == npcId)
                 {

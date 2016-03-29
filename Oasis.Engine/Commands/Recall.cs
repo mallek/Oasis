@@ -9,11 +9,11 @@ namespace Oasis.Engine.Commands
 {
     public class Recall : IGameCommand
     {
-        public bool ExecuteCommand(string[] args, PlayerCharter charter)
+        public bool ExecuteCommand(string[] args, PlayerCharacter character)
         {
-            charter.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
+            character.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
             ReadLocation readLocation = new ReadLocation();
-            readLocation.ExecuteCommand(null, charter);
+            readLocation.ExecuteCommand(null, character);
             return true;
         }
 

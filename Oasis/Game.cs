@@ -13,8 +13,9 @@ namespace Oasis
     public class Game
     {
 
-        private PlayerCharter _player;
-        private NonPlayerCharter _currentNpc;
+        private PlayerCharacter _player;
+        private NonPlayerCharacter _currentNpc;
+        private IGameCommand _prompt;
         
         public const int PLAYER_ID_UNKNOWN = 1;
         public const string COMMAND_NAMESPACE = "Oasis.Engine.Commands";
@@ -22,10 +23,11 @@ namespace Oasis
 
         public Game()
         {
-            _player = new PlayerCharter(PLAYER_ID_UNKNOWN, 10, 10, "unknown", 1, 0, 0);
+            _player = new PlayerCharacter(PLAYER_ID_UNKNOWN, 10, 10, "unknown", 1, 0, 0);
             _player.CurrentLocation = World.LocationByID(World.LOCATION_ID_HOME);
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_RUSTY_SWORD), 1));
             _player.Inventory.Add(new InventoryItem(World.ItemByID(World.ITEM_ID_HEALING_POTION), 2));
+            _prompt = new Prompt();
             
         }
 
@@ -60,7 +62,7 @@ namespace Oasis
 
         public void ReadMotd()
         {
-            Motd motd = new Motd();
+            IGameCommand motd = new Motd2();
             motd.ExecuteCommand(null, _player);
         }
 
@@ -97,6 +99,7 @@ namespace Oasis
                     var commandType = _player.CommandDictionary[command[0]];
                     IGameCommand commandInstance = (IGameCommand)Activator.CreateInstance(commandType);
                     commandInstance.ExecuteCommand(command, _player);
+                    _prompt.ExecuteCommand(null, _player);
                 }
                 else
                 {
